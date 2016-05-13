@@ -10,7 +10,7 @@ gulp.task 'nml', ->
     .pipe(plumber())
     .pipe(coffee())
     .pipe(concat('nml.js'))
-    .pipe(gulp.dest('tmp'))
+    .pipe(gulp.dest('out'))
     .pipe notify 'nml.js done!!!', {onLast: true}
 
 gulp.task 'watch', ['default'], ->
