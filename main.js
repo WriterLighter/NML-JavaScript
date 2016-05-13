@@ -1,12 +1,6 @@
 NML = require("./out/nml")
 
-novel = new NML("text")
-novel.to("plain")
+novel = new NML("")
+var v = novel.to("html")
 
-
-// var nml = require('./out/nml');
-
-// var nml1 = new NML("car01")
-// nml1.to("plain")
-
-// console.log(nnml("本文"));
+console.log(v)
