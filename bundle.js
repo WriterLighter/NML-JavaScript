@@ -9,8 +9,6 @@ window.convert = function() {
   var novel = new NML(textarea.value)
   var output = document.getElementById("output");
 
-  alert(mode.options[mode.selectedIndex].value);
-
   output.innerHTML = novel.to(mode.options[mode.selectedIndex].value);
 }
 
