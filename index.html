@@ -5,7 +5,7 @@
     <script type="text/javascript" src="./bundle.js"></script>
   </head>
   <body>
-    <textarea name="zxcv" cols="50" rows="10" >#見出し1
+    <textarea cols="50" rows="10" >#見出し1
 ##見出し2
 ###見出し3
 ####見出し4
@@ -38,6 +38,11 @@ _斜体_
 
     <p>
     <input type="button" value="変換" onclick="convert()">
+    <select id="mode">
+      <option value="html">HTML</option>
+      <option value="plain">Plain Text</option>
+    </select>
+    </p>
     <div id="output"></div>
   </body>
 </html>
