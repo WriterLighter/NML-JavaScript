@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="./bundle.js"></script>
-    <link rel="stylesheet" href="./bower_components/split-pane/split-pane.css" />
+    <link rel="stylesheet" href="./split-pane.css" />
+    <link rel="stylesheet" href="./pretty-split-pane.css" />  
     <script src="./bower_components/split-pane/split-pane.js"></script>
     <style type="text/css">
            html, body {
@@ -21,38 +22,14 @@
            .split-pane-divider {
                background: #aaa;
            }
-
-           .pretty-split-pane-frame {
-            	box-sizing: border-box;
-            	width: 100%;
-            	height: 100%;
-            	padding: 5px;
-            	background: silver;
-            }
-
-            .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
-            	background: blue;
-            	opacity: 0.25;
-            }
-
-            .pretty-split-pane-component-textarea {
-              box-sizing: border-box;
-              border: 1px solid gray;
-              background: white;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-            }
-
-            .pretty-split-pane-component-inner {
-            	box-sizing: border-box;
-            	border: 1px solid gray;
-            	background: white;
-            	width: 100%;
-            	height: 100%;
-            	padding: 0 1em;
-            	overflow: auto;
-            }
+           .pretty-split-pane-component-textarea {
+             box-sizing: border-box;
+             border: 1px solid gray;
+             background: white;
+             width: 100%;
+             height: 100%;
+             overflow: auto;
+           }
            #left-component {
                width: 20em;
            }
