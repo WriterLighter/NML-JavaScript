@@ -2,10 +2,11 @@
   <head>
     <title>NML-Converter</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript" src="./bundle.js"></script>
   </head>
   <body>
-    <textarea cols="50" rows="10" >#見出し1
+    <textarea id="textarea" cols="50" rows="10" >#見出し1
 ##見出し2
 ###見出し3
 ####見出し4
@@ -37,8 +38,8 @@ _斜体_
 ![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png "Qiita")</textarea>
 
     <p>
-    <input type="button" value="変換" onclick="convert()">
-    <select id="mode">
+    <!-- <input type="button" value="変換" onclick="convert()"> -->
+    <select id="mode" onChange="convert();">
       <option value="html">HTML</option>
       <option value="plain">Plain Text</option>
     </select>

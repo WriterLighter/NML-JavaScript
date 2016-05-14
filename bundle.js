@@ -10,7 +10,18 @@ window.convert = function() {
   var output = document.getElementById("output");
 
   output.innerHTML = novel.to(mode.options[mode.selectedIndex].value);
+
 }
+
+$(function(){
+  convert();
+});
+
+$(function(){
+  $("#textarea").bind("keyup", function(){
+    convert();
+  });
+});
 
 },{"./out/nml":2}],2:[function(require,module,exports){
 (function() {
