@@ -1,6 +1,10 @@
 NML = require("./out/nml")
 
-novel = new NML("")
-var v = novel.to("html")
+function convert() {
 
-console.log(v)
+  var textarea = document.getElementsByTagName('textarea')[0];
+
+  var novel = new NML(textarea.value)
+  var output = document.getElementById("output");
+  output.innerHTML = novel.to("html");
+}
