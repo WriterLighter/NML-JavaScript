@@ -9,7 +9,12 @@ window.convert = function() {
   var novel = new NML(textarea.value)
   var output = document.getElementById("output");
 
-  output.innerHTML = novel.to(mode.options[mode.selectedIndex].value);
+  if (mode.options[mode.selectedIndex].value === "plain"){
+    output.innerHTML = "<pre>" + novel.to(mode.options[mode.selectedIndex].value) + "</pre>";
+  }else{
+    output.innerHTML = novel.to(mode.options[mode.selectedIndex].value);
+  }
+
 
 }
 
