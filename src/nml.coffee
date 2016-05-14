@@ -1,7 +1,6 @@
 module.exports = class @NML
 
-  @mode = 0
-
+  mode = 0
   # mode
   # 1:html
   # 2:plain
@@ -11,14 +10,14 @@ module.exports = class @NML
   to: (t) ->
     switch t
       when "html"
-        @mode = 1
+        mode = 1
         s = ''
         body = @text.split('\n')
         body.forEach (@text) ->
           s = s + checkLine(@text) + '\n'
         return '<div class="page"><div>' + s + '</div></div>'
       when "plain"
-        @mode = 2
+        mode = 2
         s = ''
         body = @text.split('\n')
         body.forEach (@text) ->
@@ -45,14 +44,14 @@ module.exports = class @NML
   #形式段落
   checkSpace = (line) ->
     if line.match(/^[ \s]/)
-      if @mode == 1
+      if mode is 1
         line = '<p>' + line + '</p>'
     line
 
   #意味段落
   checkReturn = (line) ->
-    if line == ''
-      if @mode == 1
+    if line is ''
+      if mode is 1
         line = '</div><div>'
     line
 
@@ -62,7 +61,7 @@ module.exports = class @NML
     myArray = undefined
     while (myArray = myRe.exec(line)) != null
       text = myArray[0]
-      if @mode == 1
+      if mode is 1
         moji = text.match(/[\||].*?[\((]/)[0]
         moji = moji.substring(1, moji.length - 1)
         ruby = text.match(/[\((].*?[\))]/)[0]
@@ -76,22 +75,22 @@ module.exports = class @NML
 
   #改ページ
   checkNewPage = (line) ->
-    if line.match(/^[-ー==]{3,}$/)
-      if @mode == 1
+    if line.match(/^[-ーis]{3,}$/)
+      if mode is 1
         line = '</div></div><div class="page"><div>'
-      else if @mode == 2
+      else if mode is 2
         line = ''
     line
 
   #見出し
   checkSharp = (line) ->
-    if @mode == 1
+    if mode is 1
       md = undefined
       if (md = line.match(/^[##]*/)[0]) != ''
         count = if md.length > 6 then 6 else md.length
         line = line.replace(/^[##]*/, '')
         line = '<h' + count + '>' + line + '</h' + count + '>'
-    else if @mode == 2
+    else if mode is 2
       line = line.replace(/^[##]*/, '')
     line
 
@@ -101,9 +100,9 @@ module.exports = class @NML
     myArray = undefined
     while (myArray = myRe.exec(line)) != null
       text = myArray[0]
-      if @mode == 1
+      if mode is 1
         line = line.replace(text, '<s>' + text.substring(2, text.length - 2) + '</s>')
-      else if @mode == 2
+      else if mode is 2
         line = line.replace(text, text.substring(2, text.length - 2))
     line
 
@@ -114,10 +113,10 @@ module.exports = class @NML
     myArray = undefined
     while (myArray = myRe.exec(line)) != null
       text = myArray[0]
-      if @mode == 1
+      if mode is 1
         if !text.match(/^[\__**]{2}$/)
           line = line.replace(text, '<i>' + text.substring(1, text.length - 1) + '</i>')
-      else if @mode == 2
+      else if mode is 2
         if !text.match(/^[\__**]{2}$/)
           line = line.replace(text, text.substring(1, text.length - 1))
     line
@@ -128,16 +127,17 @@ module.exports = class @NML
     myArray = undefined
     while (myArray = myRe.exec(line)) != null
       text = myArray[0]
-      if @mode == 1
+      if mode is 1
         line = line.replace(text, '<b>' + text.substring(2, text.length - 2) + '</b>')
-      else if @mode == 2
+      else if mode is 2
         line = line.replace(text, text.substring(2, text.length - 2))
     line
 
   #引用
   checkBlockquotes = (line) ->
     if line.match(/^[>>]/)
-      line = '<blockquote>' + line.substring(1) + '</blockquote>'
+      if mode is 1
+        line = '<blockquote>' + line.substring(1) + '</blockquote>'
     line
 
   #リンク/画像
@@ -147,7 +147,7 @@ module.exports = class @NML
     while (myArray = myRe.exec(line)) != null
       text = myArray[0]
       if text.match(/[!!]{1,}\[.*?\][\((].*?[\))]/)
-        if @mode == 1
+        if mode is 1
           if text.match(/\".*\"/)
             linkText = line.match(/\[.*?\]/)[0]
             url = line.match(/[\((].*?[\"]/)[0].replace(RegExp(' ', 'g'), '')
@@ -162,11 +162,11 @@ module.exports = class @NML
             linkText = linkText.substring(1, linkText.length - 1)
             url = url.substring(1, url.length - 1)
             line = line.replace(text, '<img src="' + url + '" alt="' + linkText + '">')
-        else if @mode == 2
+        else if mode is 2
           line = line.replace(text, "")
 
       else
-        if @mode == 1
+        if mode is 1
           if text.match(/\".*\"/)
             linkText = line.match(/\[.*?\]/)[0]
             url = line.match(/[\((].*?[\"]/)[0].replace(RegExp(' ', 'g'), '')
@@ -181,20 +181,20 @@ module.exports = class @NML
             linkText = linkText.substring(1, linkText.length - 1)
             url = url.substring(1, url.length - 1)
             line = line.replace(text, '<a href="' + url + '">' + linkText + '</a>')
-        else if @mode == 2
+        else if mode is 2
           line = line.replace(text, "")
     line
 
   #数字区切り
   checkPunctuationNumber = (line) ->
     if line.match(/^[0-9]+\.$/)
-      if @mode == 1
+      if mode is 1
         line = '<hr class="number">'
     line
 
   #記号区切り
   checkPunctuationSymbol = (line) ->
     if line.match(/^[-*ー*]+\.$/)
-      if @mode == 1
+      if mode is 1
         line = '<hr class="symbol">'
     line

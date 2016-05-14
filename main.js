@@ -1,6 +1,6 @@
 NML = require("./out/nml")
 
-function convert() {
+window.convert = function() {
 
   var textarea = document.getElementsByTagName('textarea')[0];
 
