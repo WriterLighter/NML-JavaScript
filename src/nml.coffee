@@ -39,6 +39,7 @@ module.exports = class @NML
     line = checkLink(line)
     line = checkPunctuationNumber(line)
     line = checkPunctuationSymbol(line)
+    line = checkNextLine(line)
     line
 
   #形式段落
@@ -197,4 +198,10 @@ module.exports = class @NML
     if line.match(/^[-*ー*]+\.$/)
       if mode is 1
         line = '<hr class="symbol">'
+    line
+
+  #改行
+  checkNextLine = (line) ->
+    if line.match(/[ \s]{3,}$/)
+      line = line + "<br>"
     line

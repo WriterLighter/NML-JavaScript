@@ -31,7 +31,7 @@ $(function(){
 },{"./out/nml":2}],2:[function(require,module,exports){
 (function() {
   module.exports = this.NML = (function() {
-    var checkBlockquotes, checkBold, checkItalic, checkLine, checkLink, checkNewPage, checkPunctuationNumber, checkPunctuationSymbol, checkReturn, checkRuby, checkSharp, checkSpace, checkStrikethrough, mode;
+    var checkBlockquotes, checkBold, checkItalic, checkLine, checkLink, checkNewPage, checkNextLine, checkPunctuationNumber, checkPunctuationSymbol, checkReturn, checkRuby, checkSharp, checkSpace, checkStrikethrough, mode;
 
     mode = 0;
 
@@ -78,6 +78,7 @@ $(function(){
       line = checkLink(line);
       line = checkPunctuationNumber(line);
       line = checkPunctuationSymbol(line);
+      line = checkNextLine(line);
       return line;
     };
 
@@ -269,6 +270,13 @@ $(function(){
         if (mode === 1) {
           line = '<hr class="symbol">';
         }
+      }
+      return line;
+    };
+
+    checkNextLine = function(line) {
+      if (line.match(/[ \s]{3,}$/)) {
+        line = line + "<br>";
       }
       return line;
     };
