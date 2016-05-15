@@ -4,59 +4,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="./bundle.js"></script>
-    <link rel="stylesheet" href="./split-pane.css" />
-    <link rel="stylesheet" href="./pretty-split-pane.css" />
-    <script src="./split-pane.js"></script>
-    <style type="text/css">
-           html, body {
-               height: 95%;
-               margin: 0;
-               padding: 0;
-           }
-           textarea {
-             	 resize: none;
-               height: 100%;
-               width: 100%;
-               padding: 1em 1em;
-               font-family: sans-serif;
-               font-size: 16;
-           }
-           .split-pane-divider {
-               background: #aaa;
-           }
-           .pretty-split-pane-component-textarea {
-             box-sizing: border-box;
-             border: 1px solid gray;
-             background: white;
-             width: 100%;
-             height: 100%;
-             overflow: auto;
-           }
-           #left-component {
-               width: 20em;
-           }
-           #my-divider {
-               left: 20em; /* Same as left component width */
-               width: 5px;
-           }
-           #right-component {
-               left: 20em;  /* Same as left component width */
-               margin-left: 5px;  /* Same as divider width */
-           }
-    </style>
-    <script>
-            $(function() {
-                $('div.split-pane').splitPane();
-            });
-    </script>
+    <link rel="stylesheet" href="./nml.css" />
   </head>
   <body>
-    <div class="pretty-split-pane-frame">
-      <div class="split-pane fixed-left">
-        <div class="split-pane-component" id="left-component">
-          <div class="pretty-split-pane-component-textarea">
-            <textarea id="textarea" >
-#見出し1
+
+    <div class="title">
+      NML Convert to
+      <div class="dropdown">
+      <select id="mode" onChange="convert();" class="dropdown-select">
+        <option value="html">HTML</option>
+        <option value="plain">Plain Text</option>
+      </select>
+    </div></div>
+
+    <div class="editor">
+      <div class="meg"></div>
+
+      <div class="form">
+        <div class="formarea">
+          <textarea id="textarea">#見出し1
 ##見出し2
 ###見出し3
 ####見出し4
@@ -85,30 +51,21 @@ _斜体_
 
 ![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png)
 
-![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png "Qiita")
-            </textarea>
-          </div>
+![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png "Qiita")</textarea>
         </div>
-        <div class="split-pane-divider" id="my-divider"></div>
-          <div class="split-pane-component" id="right-component">
-            <div class="pretty-split-pane-component-inner">
-              <div id="output"></div>
-            </div>
-          </div>
+        <div class="split"></div>
+        <div class="formarea">
+          <div id="output" class="out"></div>
         </div>
-
-      <div class="split-pan">
-
-
-      <p>
-      <!-- <input type="button" value="変換" onclick="convert()"> -->
-      <select id="mode" onChange="convert();">
-        <option value="html">HTML</option>
-        <option value="plain">Plain Text</option>
-      </select>
-      </p>
-
       </div>
+      <div class="meg"></div>
+    </div>
+    <div class="footer">
+      このコンバータはMITライセンスで
+      <a class="footer-link" href="https://github.com/WriterLighter/NML-JavaScript">Github</a>
+      で公開されています。このページは
+      <a class="footer-link" href="http://www.cssflow.com/mit-license">Open Source Softwere</a>
+      によって実現しました。
     </div>
   </body>
 </html>
