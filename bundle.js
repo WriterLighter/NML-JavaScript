@@ -10,18 +10,17 @@ window.convert = function() {
   var output = document.getElementById("output");
 
   if (mode.options[mode.selectedIndex].value === "htmlpre"){
-    output.innerHTML = novel.to("html");
+    $("#output").replaceWith("<div id=\"output\" class=\"out\">" + novel.to("html") + "</div>");
   }else if (mode.options[mode.selectedIndex].value === "html"){
     var text = novel.to(mode.options[mode.selectedIndex].value);
     text = text.replace( /\n/g , "" ) ;
-    output.innerHTML = "<pre>" + format_xml(text) + "</pre>";
-
+    $("#output").replaceWith("<textarea readonly id=\"output\" class=\"out\">" + format_xml(text) + "</textarea>");
     var pre = document.querySelectorAll('pre');
     for(var i = 0; i < pre.length; i++) {
       pre[i].innerHTML = escapeHtml(pre[i].innerHTML);
     }
   }else{
-    output.innerHTML = "<pre>" + novel.to(mode.options[mode.selectedIndex].value) + "</pre>";
+    $("#output").replaceWith("<div id=\"output\" class=\"out\">" + "<pre>" + novel.to(mode.options[mode.selectedIndex].value) + "</pre>" + "</div>");
   }
 }
 function spaces(len)
