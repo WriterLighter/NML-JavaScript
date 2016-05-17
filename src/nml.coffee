@@ -4,6 +4,12 @@ module.exports = class @NML
   # mode
   # 1:html
   # 2:plain
+  multi_line = ""
+  multi_line_mode = 0
+  # mode
+  # 0:not multi line
+  # 1:html
+  # 2:plain
 
   constructor: (@text) ->
 
@@ -156,13 +162,13 @@ module.exports = class @NML
             linkText = linkText.substring(1, linkText.length - 1)
             url = url.substring(1, url.length - 1)
             name = name.substring(1, name.length - 1)
-            line = line.replace(text, '<img src="' + url + '" alt="' + linkText + '" title="' + name + '">')
+            line = line.replace(text, '<img src="' + url + '" alt="' + linkText + '" title="' + name + '"/>')
           else
             linkText = line.match(/\[.*?\]/)[0]
             url = line.match(/[\((].*?[\))]/)[0].replace(RegExp(' ', 'g'), '')
             linkText = linkText.substring(1, linkText.length - 1)
             url = url.substring(1, url.length - 1)
-            line = line.replace(text, '<img src="' + url + '" alt="' + linkText + '">')
+            line = line.replace(text, '<img src="' + url + '" alt="' + linkText + '"/>')
         else if mode is 2
           line = line.replace(text, "")
 
@@ -190,18 +196,18 @@ module.exports = class @NML
   checkPunctuationNumber = (line) ->
     if line.match(/^[0-9]+\.$/)
       if mode is 1
-        line = '<hr class="number">'
+        line = '<hr class="number"/>'
     line
 
   #記号区切り
   checkPunctuationSymbol = (line) ->
     if line.match(/^[-*ー*]+\.$/)
       if mode is 1
-        line = '<hr class="symbol">'
+        line = '<hr class="symbol"/>'
     line
 
   #改行
   checkNextLine = (line) ->
     if line.match(/[ \s]{3,}$/)
-      line = line + "<br>"
+      line = line + "<br/>"
     line
