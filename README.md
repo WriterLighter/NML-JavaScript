@@ -1,4 +1,4 @@
-# NML-JavaScript
+# NML-Converter
 ## What's this?
 NML to HTML/PlainText for JavaScript.
 
