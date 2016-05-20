@@ -1,4 +1,4 @@
-NML = require("./out/nml")
+NML = require('nml-converter')
 
 window.convert = function() {
 
