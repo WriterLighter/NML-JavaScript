@@ -1,0 +1,28 @@
+{
+  "name": "nml",
+  "version": "1.0.0",
+  "description": "NML(Novel Markup Language) converter for js",
+  "main": "main.js",
+  "scripts": {
+    "test": "ava -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WriterLighter/NML-JavaScript.git"
+  },
+  "keywords": [
+    "nml",
+    "converter",
+    "novel",
+    "markup"
+  ],
+  "author": "Ritsuki Goto <kawakawaritsuki.dev@gmail.com> (http://kawakawaplanning.xyz/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WriterLighter/NML-JavaScript/issues"
+  },
+  "homepage": "https://github.com/WriterLighter/NML-JavaScript#readme",
+  "devDependencies": {
+    "ava": "^0.14.0"
+  }
+}
