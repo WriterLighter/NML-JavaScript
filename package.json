@@ -1,5 +1,5 @@
 {
-  "name": "nml",
+  "name": "nml-converter",
   "version": "1.0.0",
   "description": "NML(Novel Markup Language) converter for js",
   "main": "nml.js",
