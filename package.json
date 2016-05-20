@@ -2,7 +2,7 @@
   "name": "nml",
   "version": "1.0.0",
   "description": "NML(Novel Markup Language) converter for js",
-  "main": "main.js",
+  "main": "nml.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
