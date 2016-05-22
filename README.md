@@ -19,7 +19,7 @@ console.log(novel.to("plain"))
 ```
 
 ## Test now!
-http://writerlighter.github.io/NML-JavaScript/
+http://AI-create-team.github.io/NML-JavaScript/
 
 ## Contributor
 @kawakawaritsuki 
