@@ -2,7 +2,7 @@
 ## What's this?
 NML to HTML/PlainText for JavaScript.
 
-## How to use?
+## How to use
 Install
 ```
 npm install nml-converter
@@ -18,8 +18,17 @@ console.log(novel.to("html"))
 console.log(novel.to("plain"))
 ```
 
+## How to build
+
+```
+$ npm install
+$ bower install
+$ gulp
+```
+
+
 ## Test now!
-http://AI-create-team.github.io/NML-JavaScript/
+http://WriterLighter.github.io/NML-JavaScript/
 
 ## Contributor
 @kawakawaritsuki 
