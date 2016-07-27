@@ -21,7 +21,9 @@ module.exports = class @NML
         body = @text.split('\n')
         body.forEach (@text) ->
           s = s + checkLine(@text) + '\n'
-        return '<div class="page"><div>' + s + '</div></div>'
+        s = checkRemoveDiv('<div class="page"><div>' + s.substr( 0, s.length-1 ) + '</div></div>')
+
+        return s
       when "plain"
         mode = 2
         s = ''
@@ -114,7 +116,6 @@ module.exports = class @NML
     line
 
   #斜体
-
   checkItalic = (line) ->
     myRe = /[\__**]{1}.*?[\__**]{1}/g
     myArray = undefined
@@ -211,3 +212,10 @@ module.exports = class @NML
     if line.match(/[ \s]{3,}$/)
       line = line + "<br/>"
     line
+
+  #冗長なdivを削除
+  checkRemoveDiv = (line) ->
+    while (line.match(/<div><\/div>/))
+      line = line.replace(/<div><\/div>/, '')
+    line
+
