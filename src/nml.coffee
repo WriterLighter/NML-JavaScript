@@ -54,7 +54,7 @@ module.exports = class @NML
   checkSpace = (line) ->
     if line.match(/^[ \s]/)
       if mode is 1
-        line = '<p>' + line + '</p>'
+        line = '<p>' + line.substr(1) + '</p>'
     line
 
   #意味段落
