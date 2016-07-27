@@ -11,6 +11,8 @@ module.exports = class @NML
   # 1:html
   # 2:plain
 
+  list_indent = -1
+
   constructor: (@text) ->
 
   to: (t) ->
@@ -49,6 +51,7 @@ module.exports = class @NML
     line = checkPunctuationNumber(line)
     line = checkPunctuationSymbol(line)
     line = checkNextLine(line)
+    line = checkDefinitionList(list)
     line
 
   #形式段落
@@ -218,7 +221,7 @@ module.exports = class @NML
 
   #冗長なdivを削除
   checkRemoveDiv = (line) ->
-    while (line.match(/<div><\/div>/))
-      line = line.replace(/<div><\/div>/, '')
+    while (line.match(/<div class="format-paragraph"><\/div>/))
+      line = line.replace(/<div class="format-paragraph"><\/div>/, '')
     line
 
