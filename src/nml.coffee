@@ -54,7 +54,7 @@ module.exports = class @NML
   checkSpace = (line) ->
     if line.match(/^[ \s]/)
       if mode is 1
-        line = '<p>' + line.substr(1) + '</p>'
+        line = '<p>' + line.replace(/^[ \s]/,"") + '</p>'
     line
 
   #意味段落
@@ -98,7 +98,7 @@ module.exports = class @NML
       if (md = line.match(/^[##]*/)[0]) != ''
         count = if md.length > 6 then 6 else md.length
         line = line.replace(/^[##]*/, '')
-        line = '<h' + count + '>' + line + '</h' + count + '>'
+        line = '<h' + count + '>' + line.replace(/^[ \s]/,"") + '</h' + count + '>'
     else if mode is 2
       line = line.replace(/^[##]*/, '')
     line
