@@ -21,7 +21,7 @@ module.exports = class @NML
         body = @text.split('\n')
         body.forEach (@text) ->
           s = s + checkLine(@text) + '\n'
-        s = checkRemoveDiv('<section class="page"><div>' + s.substr( 0, s.length-1 ) + '</div></section>')
+        s = checkRemoveDiv('<section class="page"><div class="meaning-paragraph">' + s.substr( 0, s.length-1 ) + '</div></section>')
 
         return s
       when "plain"
@@ -61,7 +61,7 @@ module.exports = class @NML
   checkReturn = (line) ->
     if line is ''
       if mode is 1
-        line = '</div><div>'
+        line = '</div><div class="meaning-paragraph">'
     line
 
   #ルビ
@@ -86,7 +86,7 @@ module.exports = class @NML
   checkNewPage = (line) ->
     if line.match(/^[-ーis]{3,}$/)
       if mode is 1
-        line = '</div></section><section class="page"><div>'
+        line = '</div></section><section class="page"><div class="meaning-paragraph">'
       else if mode is 2
         line = ''
     line
