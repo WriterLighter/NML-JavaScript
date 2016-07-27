@@ -30,6 +30,7 @@ module.exports = class @NML
         body = @text.split('\n')
         body.forEach (@text) ->
           s = s + checkLine(@text) + '\n'
+        s.substr( 0, s.length-1 )
         return s
       else
         "Error!"
@@ -75,11 +76,13 @@ module.exports = class @NML
         moji = moji.substring(1, moji.length - 1)
         ruby = text.match(/[\((].*?[\))]/)[0]
         ruby = ruby.substring(1, ruby.length - 1)
-        line = line.replace(text, '<ruby>' + moji + '<rt>' + ruby + '</rt></ruby>')
+        line = line.replace(text, '<ruby>' + moji + '<rp>（</rp><rt>' + ruby + '</rt><rp>）</rp></ruby>')
       else
         moji = text.match(/[\||].*?[\((]/)[0]
         moji = moji.substring(1, moji.length - 1)
-        line = line.replace(text, moji)
+        ruby = text.match(/[\((].*?[\))]/)[0]
+        ruby = ruby.substring(1, ruby.length - 1)
+        line = line.replace(text, moji + "(" + ruby + ")")
     line
 
   #改ページ
